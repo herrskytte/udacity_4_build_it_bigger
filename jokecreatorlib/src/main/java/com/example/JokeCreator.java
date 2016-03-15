@@ -28,4 +28,8 @@ public class JokeCreator {
         Random ran = new Random();
         return jokes[ran.nextInt(jokes.length)];
     }
+
+    public static void main(String[] args){
+        System.out.println(new JokeCreator().getRandomJoke());
+    }
 }

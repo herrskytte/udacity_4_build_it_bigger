@@ -1,6 +1,9 @@
 apply plugin: 'java'
+apply plugin: 'application'
 
+mainClassName = "com.example.JokeCreator"
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+task solutionExecute(type: JavaExec) {
+    main = "com.example.JokeCreator"
+    classpath = sourceSets.main.runtimeClasspath
 }
