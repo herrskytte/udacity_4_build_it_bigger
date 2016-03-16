@@ -3,6 +3,9 @@ apply plugin: 'application'
 
 mainClassName = "com.example.JokeCreator"
 
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
 task solutionExecute(type: JavaExec) {
     main = "com.example.JokeCreator"
     classpath = sourceSets.main.runtimeClasspath

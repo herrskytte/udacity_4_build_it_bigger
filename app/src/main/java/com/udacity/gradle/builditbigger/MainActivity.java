@@ -13,7 +13,7 @@ import com.example.JokeCreator;
 import no.skytte.jokedisplayer.JokeDisplayerActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements GetJokeTaskListener{
 
     JokeCreator mJokeCreator;
     @Override
@@ -48,11 +48,19 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Intent showJokeIntent = new Intent(this, JokeDisplayerActivity.class);
-        showJokeIntent.putExtra(JokeDisplayerActivity.JOKE_EXTRA, mJokeCreator.getRandomJoke());
-        startActivity(showJokeIntent);
-        //Toast.makeText(this, mJokeCreator.getRandomJoke(), Toast.LENGTH_LONG).show();
+        new GetJokeAsyncTask(this).execute();
     }
 
+    @Override
+    public void onSuccess(String joke) {
+        Intent showJokeIntent = new Intent(this, JokeDisplayerActivity.class);
+        showJokeIntent.putExtra(JokeDisplayerActivity.JOKE_EXTRA, joke);
+        startActivity(showJokeIntent);
+    }
+
+    @Override
+    public void onFailure(String exception) {
+        Toast.makeText(this, R.string.error_download, Toast.LENGTH_LONG).show();
+    }
 
 }

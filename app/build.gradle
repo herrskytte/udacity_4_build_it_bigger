@@ -35,6 +35,7 @@ dependencies {
     compile project(':jokedisplayer')
     // Added for AdMob
     freeCompile 'com.google.android.gms:play-services:7.3.0'
-    compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
+
+    compile 'com.android.support:appcompat-v7:23.2.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }
